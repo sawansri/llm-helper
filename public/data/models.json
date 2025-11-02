@@ -1,0 +1,162 @@
+[
+  {
+    "id": "llama-3-8b",
+    "name": "Llama 3 8B",
+    "description": "Meta's latest general-purpose model with excellent performance across tasks",
+    "parameters": "8B",
+    "provider": "Meta",
+    "license": "Llama 3 Community License",
+    "useCases": ["chat", "general", "coding", "writing"],
+    "tags": ["popular", "versatile", "open-source"],
+    "variants": [
+      {
+        "quantization": "Q4_K_M",
+        "vramRequired": 6,
+        "ramRequired": 8,
+        "fileSize": 4.7,
+        "contextWindow": 8192
+      },
+      {
+        "quantization": "Q5_K_M",
+        "vramRequired": 7,
+        "ramRequired": 10,
+        "fileSize": 5.6,
+        "contextWindow": 8192
+      },
+      {
+        "quantization": "Q8_0",
+        "vramRequired": 9,
+        "ramRequired": 12,
+        "fileSize": 8.5,
+        "contextWindow": 8192
+      }
+    ],
+    "links": {
+      "huggingFace": "https://huggingface.co/meta-llama/Meta-Llama-3-8B",
+      "ollama": "ollama run llama3",
+      "website": "https://llama.meta.com/"
+    }
+  },
+  {
+    "id": "mistral-7b",
+    "name": "Mistral 7B",
+    "description": "High-performance 7B model with excellent efficiency and quality",
+    "parameters": "7B",
+    "provider": "Mistral AI",
+    "license": "Apache 2.0",
+    "useCases": ["chat", "general", "coding"],
+    "tags": ["popular", "efficient", "open-source"],
+    "variants": [
+      {
+        "quantization": "Q4_K_M",
+        "vramRequired": 5,
+        "ramRequired": 8,
+        "fileSize": 4.1,
+        "contextWindow": 8192
+      },
+      {
+        "quantization": "Q5_K_M",
+        "vramRequired": 6,
+        "ramRequired": 8,
+        "fileSize": 4.8,
+        "contextWindow": 8192
+      }
+    ],
+    "links": {
+      "huggingFace": "https://huggingface.co/mistralai/Mistral-7B-v0.1",
+      "ollama": "ollama run mistral",
+      "website": "https://mistral.ai/"
+    }
+  },
+  {
+    "id": "phi-3-mini",
+    "name": "Phi-3 Mini",
+    "description": "Microsoft's small but powerful 3.8B parameter model, great for constrained hardware",
+    "parameters": "3.8B",
+    "provider": "Microsoft",
+    "license": "MIT",
+    "useCases": ["chat", "general", "mobile"],
+    "tags": ["efficient", "small", "open-source"],
+    "variants": [
+      {
+        "quantization": "Q4_K_M",
+        "vramRequired": 3,
+        "ramRequired": 4,
+        "fileSize": 2.3,
+        "contextWindow": 4096
+      },
+      {
+        "quantization": "FP16",
+        "vramRequired": 8,
+        "ramRequired": 10,
+        "fileSize": 7.6,
+        "contextWindow": 4096
+      }
+    ],
+    "links": {
+      "huggingFace": "https://huggingface.co/microsoft/Phi-3-mini-4k-instruct",
+      "ollama": "ollama run phi3"
+    }
+  },
+  {
+    "id": "llama-3-70b",
+    "name": "Llama 3 70B",
+    "description": "Meta's flagship model with state-of-the-art performance, requires significant VRAM",
+    "parameters": "70B",
+    "provider": "Meta",
+    "license": "Llama 3 Community License",
+    "useCases": ["chat", "general", "coding", "writing", "research"],
+    "tags": ["powerful", "large", "open-source"],
+    "variants": [
+      {
+        "quantization": "Q4_K_M",
+        "vramRequired": 48,
+        "ramRequired": 64,
+        "fileSize": 40,
+        "contextWindow": 8192
+      },
+      {
+        "quantization": "Q5_K_M",
+        "vramRequired": 56,
+        "ramRequired": 72,
+        "fileSize": 48,
+        "contextWindow": 8192
+      }
+    ],
+    "links": {
+      "huggingFace": "https://huggingface.co/meta-llama/Meta-Llama-3-70B",
+      "ollama": "ollama run llama3:70b",
+      "website": "https://llama.meta.com/"
+    }
+  },
+  {
+    "id": "deepseek-coder-6.7b",
+    "name": "DeepSeek Coder 6.7B",
+    "description": "Specialized coding model with strong performance on programming tasks",
+    "parameters": "6.7B",
+    "provider": "DeepSeek",
+    "license": "DeepSeek License",
+    "useCases": ["coding", "technical"],
+    "tags": ["coding", "specialized", "efficient"],
+    "variants": [
+      {
+        "quantization": "Q4_K_M",
+        "vramRequired": 5,
+        "ramRequired": 8,
+        "fileSize": 3.8,
+        "contextWindow": 16384
+      },
+      {
+        "quantization": "Q8_0",
+        "vramRequired": 8,
+        "ramRequired": 10,
+        "fileSize": 7.1,
+        "contextWindow": 16384
+      }
+    ],
+    "links": {
+      "huggingFace": "https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-instruct",
+      "ollama": "ollama run deepseek-coder"
+    }
+  }
+]

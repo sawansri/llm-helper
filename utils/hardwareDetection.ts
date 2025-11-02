@@ -1,27 +1,31 @@
 import { HardwareSpecs, DetectionResult } from '@/lib/types'
+import { loadGPUDatabase, findGPUSpec } from './gpuDatabase'
 
 export async function detectHardware(): Promise<DetectionResult> {
   const errors: string[] = []
   const specs: Partial<HardwareSpecs> = {}
 
-  try {
-    // Detect GPU using WebGL
-    const gpu = detectGPU()
-    if (gpu) {
-      specs.gpu = gpu
-    }
-  } catch (error) {
-    errors.push('GPU detection failed')
-  }
+  // Load GPU database first
+  await loadGPUDatabase()
 
   try {
-    // Detect RAM
+    // Detect RAM first (needed for integrated GPU VRAM calculation)
     const ram = detectRAM()
     if (ram) {
       specs.ram = ram
     }
   } catch (error) {
     errors.push('RAM detection failed')
+  }
+
+  try {
+    // Detect GPU using WebGL/WebGPU
+    const gpu = await detectGPU(specs.ram)
+    if (gpu) {
+      specs.gpu = gpu
+    }
+  } catch (error) {
+    errors.push('GPU detection failed')
   }
 
   try {
@@ -48,84 +52,47 @@ export async function detectHardware(): Promise<DetectionResult> {
   }
 }
 
-function detectGPU() {
+async function detectGPU(systemRAM?: number) {
   if (typeof window === 'undefined') return null
 
-  const canvas = document.createElement('canvas')
-  const gl = canvas.getContext('webgl') as WebGLRenderingContext | null ||
-              canvas.getContext('experimental-webgl') as WebGLRenderingContext | null
+  let gpuModel = ''
 
-  if (!gl) return null
-
-  const debugInfo = gl.getExtension('WEBGL_debug_renderer_info')
-  if (!debugInfo) return null
-
-  const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL)
-
-  return {
-    model: renderer || 'Unknown GPU',
-    vram: estimateVRAM(renderer),
-    detected: true
-  }
-}
-
-function estimateVRAM(gpuModel: string): number {
-  // Parse common GPU patterns
-  const vramPatterns = [
-    // NVIDIA RTX 40 Series
-    { pattern: /RTX\s*4090/i, vram: 24 },
-    { pattern: /RTX\s*4080/i, vram: 16 },
-    { pattern: /RTX\s*4070\s*Ti/i, vram: 12 },
-    { pattern: /RTX\s*4070/i, vram: 12 },
-    { pattern: /RTX\s*4060\s*Ti/i, vram: 8 },
-    { pattern: /RTX\s*4060/i, vram: 8 },
-    // NVIDIA RTX 30 Series
-    { pattern: /RTX\s*3090/i, vram: 24 },
-    { pattern: /RTX\s*3080/i, vram: 10 },
-    { pattern: /RTX\s*3070/i, vram: 8 },
-    { pattern: /RTX\s*3060/i, vram: 12 },
-    // AMD Discrete GPUs
-    { pattern: /RX\s*7900\s*XTX/i, vram: 24 },
-    { pattern: /RX\s*7900\s*XT/i, vram: 20 },
-    { pattern: /RX\s*6900/i, vram: 16 },
-    { pattern: /RX\s*6800/i, vram: 16 },
-    // AMD Integrated GPUs (Radeon Graphics)
-    { pattern: /Radeon.*890M/i, vram: 16 }, // AMD Radeon 890M (iGPU, shared memory)
-    { pattern: /Radeon.*880M/i, vram: 12 },
-    { pattern: /Radeon.*780M/i, vram: 12 },
-    { pattern: /Radeon.*680M/i, vram: 8 },
-    { pattern: /Radeon.*Graphics/i, vram: 8 }, // Generic AMD integrated
-    // Intel Integrated GPUs
-    { pattern: /Intel.*Iris.*Xe/i, vram: 8 },
-    { pattern: /Intel.*UHD/i, vram: 4 },
-    // Apple Silicon
-    { pattern: /M1\s*Max/i, vram: 32 },
-    { pattern: /M2\s*Max/i, vram: 38 },
-    { pattern: /M3\s*Max/i, vram: 48 },
-    { pattern: /M1\s*Pro/i, vram: 16 },
-    { pattern: /M2\s*Pro/i, vram: 16 },
-    { pattern: /M3\s*Pro/i, vram: 18 },
-    { pattern: /M1(?!\s*(Pro|Max))/i, vram: 8 },
-    { pattern: /M2(?!\s*(Pro|Max))/i, vram: 8 },
-    { pattern: /M3(?!\s*(Pro|Max))/i, vram: 8 },
-  ]
-
-  for (const { pattern, vram } of vramPatterns) {
-    if (pattern.test(gpuModel)) {
-      return vram
+  // Try WebGPU first (more modern, better info)
+  if ('gpu' in navigator) {
+    try {
+      const gpu = (navigator as any).gpu
+      const adapter = await gpu.requestAdapter()
+      if (adapter) {
+        const info = await adapter.requestAdapterInfo()
+        gpuModel = info.description || info.device || 'Unknown GPU'
+      }
+    } catch (error) {
+      console.log('WebGPU detection failed, falling back to WebGL')
     }
   }
 
-  // For unknown GPUs, return a conservative estimate instead of 0
-  // Check if it looks like an integrated GPU
-  if (gpuModel.toLowerCase().includes('intel') ||
-      gpuModel.toLowerCase().includes('integrated') ||
-      gpuModel.toLowerCase().includes('angle')) {
-    return 8 // Conservative estimate for integrated GPUs
+  // Fallback to WebGL if WebGPU didn't work
+  if (!gpuModel) {
+    const canvas = document.createElement('canvas')
+    const gl = canvas.getContext('webgl') as WebGLRenderingContext | null ||
+                canvas.getContext('experimental-webgl') as WebGLRenderingContext | null
+
+    if (!gl) return null
+
+    const debugInfo = gl.getExtension('WEBGL_debug_renderer_info')
+    if (!debugInfo) return null
+
+    gpuModel = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) || 'Unknown GPU'
   }
 
-  // For unknown discrete GPUs, assume at least 6GB
-  return 6
+  // Use database to find GPU specs
+  const gpuSpec = findGPUSpec(gpuModel, systemRAM)
+
+  return {
+    model: gpuModel,
+    vram: gpuSpec.vram,
+    detected: true
+  }
 }
 
 function detectRAM(): number | null {

@@ -27,6 +27,13 @@ export default function HardwareDetector({ onDetected }: {
         We'll try to detect your system specifications automatically using browser APIs.
       </p>
 
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4 text-sm">
+        <p className="text-blue-800">
+          <strong>Note:</strong> VRAM detection is estimated based on GPU model patterns.
+          Please verify and manually adjust the values below if needed.
+        </p>
+      </div>
+
       <button
         onClick={handleDetect}
         disabled={detecting}

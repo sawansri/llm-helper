@@ -1,0 +1,128 @@
+Manufacturer,Model,Type,VRAM_Amount_GB
+NVIDIA,GeForce RTX 5090,Discrete,32 GB
+NVIDIA,GeForce RTX 5080,Discrete,16 GB
+NVIDIA,GeForce RTX 5070 Ti,Discrete,16 GB
+NVIDIA,GeForce RTX 5070,Discrete,12 GB
+NVIDIA,GeForce RTX 5060 Ti,Discrete,8 GB
+NVIDIA,GeForce RTX 5060,Discrete,8 GB
+NVIDIA,GeForce RTX 5060 Laptop GPU,Discrete,8 GB
+NVIDIA,GeForce RTX 4090,Discrete,24 GB
+NVIDIA,GeForce RTX 4080 SUPER,Discrete,16 GB
+NVIDIA,GeForce RTX 4080,Discrete,16 GB
+NVIDIA,GeForce RTX 4070 Ti SUPER,Discrete,16 GB
+NVIDIA,GeForce RTX 4070 Ti,Discrete,12 GB
+NVIDIA,GeForce RTX 4070 SUPER,Discrete,12 GB
+NVIDIA,GeForce RTX 4070,Discrete,12 GB
+NVIDIA,GeForce RTX 4060 Ti,Discrete,8 GB / 16 GB
+NVIDIA,GeForce RTX 4060,Discrete,8 GB
+NVIDIA,GeForce RTX 4070 Laptop GPU,Discrete,8 GB
+NVIDIA,GeForce RTX 4060 Laptop GPU,Discrete,8 GB
+NVIDIA,GeForce RTX 4050 Laptop GPU,Discrete,6 GB
+NVIDIA,GeForce RTX 3090 Ti,Discrete,24 GB
+NVIDIA,GeForce RTX 3090,Discrete,24 GB
+NVIDIA,GeForce RTX 3080 Ti,Discrete,12 GB
+NVIDIA,GeForce RTX 3080,Discrete,10 GB / 12 GB
+NVIDIA,GeForce RTX 3070 Ti,Discrete,8 GB
+NVIDIA,GeForce RTX 3070,Discrete,8 GB
+NVIDIA,GeForce RTX 3060 Ti,Discrete,8 GB
+NVIDIA,GeForce RTX 3060,Discrete,8 GB / 12 GB
+NVIDIA,GeForce RTX 3050,Discrete,8 GB
+NVIDIA,GeForce RTX 3080 Ti Laptop GPU,Discrete,16 GB
+NVIDIA,GeForce RTX 3080 Laptop GPU,Discrete,8 GB / 16 GB
+NVIDIA,GeForce RTX 3070 Ti Laptop GPU,Discrete,8 GB
+NVIDIA,GeForce RTX 3070 Laptop GPU,Discrete,8 GB
+NVIDIA,GeForce RTX 3060 Laptop GPU,Discrete,6 GB
+NVIDIA,GeForce RTX 3050 Ti Laptop GPU,Discrete,4 GB
+NVIDIA,GeForce RTX 3050 Laptop GPU,Discrete,4 GB / 6 GB
+NVIDIA,GeForce RTX 2080 Ti,Discrete,11 GB
+NVIDIA,GeForce RTX 2080 SUPER,Discrete,8 GB
+NVIDIA,GeForce RTX 2080,Discrete,8 GB
+NVIDIA,GeForce RTX 2070 SUPER,Discrete,8 GB
+NVIDIA,GeForce RTX 2070,Discrete,8 GB
+NVIDIA,GeForce RTX 2060 SUPER,Discrete,8 GB
+NVIDIA,GeForce RTX 2060,Discrete,6 GB / 12 GB
+NVIDIA,GeForce RTX 2050,Discrete,4 GB
+NVIDIA,GeForce GTX 1660 SUPER,Discrete,6 GB
+NVIDIA,GeForce GTX 1660 Ti,Discrete,6 GB
+NVIDIA,GeForce GTX 1660,Discrete,6 GB
+NVIDIA,GeForce GTX 1650 SUPER,Discrete,4 GB
+NVIDIA,GeForce GTX 1650,Discrete,4 GB
+NVIDIA,GeForce GTX 1080 Ti,Discrete,11 GB
+NVIDIA,GeForce GTX 1080,Discrete,8 GB
+NVIDIA,GeForce GTX 1070 Ti,Discrete,8 GB
+NVIDIA,GeForce GTX 1070,Discrete,8 GB
+NVIDIA,GeForce GTX 1060,Discrete,3 GB / 6 GB
+NVIDIA,GeForce GTX 1050 Ti,Discrete,4 GB
+NVIDIA,GeForce GTX 1050,Discrete,2 GB
+AMD,Radeon RX 7900 XTX,Discrete,24 GB
+AMD,Radeon RX 7900 XT,Discrete,20 GB
+AMD,Radeon RX 7900 GRE,Discrete,16 GB
+AMD,Radeon RX 7800 XT,Discrete,16 GB
+AMD,Radeon RX 7700 XT,Discrete,12 GB
+AMD,Radeon RX 7600 XT,Discrete,16 GB
+AMD,Radeon RX 7600,Discrete,8 GB
+AMD,Radeon RX 6950 XT,Discrete,16 GB
+AMD,Radeon RX 6900 XT,Discrete,16 GB
+AMD,Radeon RX 6800 XT,Discrete,16 GB
+AMD,Radeon RX 6800,Discrete,16 GB
+AMD,Radeon RX 6750 XT,Discrete,12 GB
+AMD,Radeon RX 6700 XT,Discrete,12 GB
+AMD,Radeon RX 6700,Discrete,10 GB
+AMD,Radeon RX 6650 XT,Discrete,8 GB
+AMD,Radeon RX 6600 XT,Discrete,8 GB
+AMD,Radeon RX 6600,Discrete,8 GB
+AMD,Radeon RX 6500 XT,Discrete,4 GB
+AMD,Radeon RX 6400,Discrete,4 GB
+AMD,Radeon RX 5700 XT,Discrete,8 GB
+AMD,Radeon RX 5700,Discrete,8 GB
+AMD,Radeon RX 5600 XT,Discrete,6 GB
+AMD,Radeon RX 5500 XT,Discrete,4 GB / 8 GB
+AMD,Radeon RX 590,Discrete,8 GB
+AMD,Radeon RX 580,Discrete,4 GB / 8 GB
+AMD,Radeon RX 570,Discrete,4 GB / 8 GB
+AMD,Radeon RX 560,Discrete,2 GB / 4 GB
+AMD,Radeon RX 550,Discrete,2 GB / 4 GB
+AMD,Radeon RX Vega 64,Discrete,8 GB (HBM2)
+AMD,Radeon RX Vega 56,Discrete,8 GB (HBM2)
+AMD,Radeon VII,Discrete,16 GB (HBM2)
+AMD,Radeon RX 7900M,Discrete,16 GB
+AMD,Radeon RX 7700S,Discrete,8 GB
+AMD,Radeon RX 7600M XT,Discrete,8 GB
+AMD,Radeon RX 7600M,Discrete,8 GB
+AMD,Radeon RX 7600S,Discrete,8 GB
+AMD,Radeon RX 6850M XT,Discrete,12 GB
+AMD,Radeon RX 6800M,Discrete,12 GB
+AMD,Radeon RX 6800S,Discrete,8 GB
+AMD,Radeon RX 6700M,Discrete,10 GB
+AMD,Radeon RX 6700S,Discrete,8 GB
+AMD,Radeon RX 6650M XT,Discrete,8 GB
+AMD,Radeon RX 6650M,Discrete,8 GB
+AMD,Radeon RX 6600M,Discrete,8 GB
+AMD,Radeon RX 6600S,Discrete,8 GB
+AMD,Radeon RX 6500M,Discrete,4 GB
+Intel,Arc A770,Discrete,8 GB / 16 GB
+Intel,Arc A750,Discrete,8 GB
+Intel,Arc A580,Discrete,8 GB
+Intel,Arc A380,Discrete,6 GB
+Intel,Arc A310,Discrete,4 GB
+Intel,Arc A770M,Discrete,16 GB
+Intel,Arc A730M,Discrete,12 GB
+Intel,Arc A570M,Discrete,8 GB
+Intel,Arc A550M,Discrete,8 GB
+Intel,Arc A530M,Discrete,8 GB
+Intel,Arc A370M,Discrete,4 GB
+Intel,Arc A350M,Discrete,4 GB
+Intel,Iris Xe Graphics,Integrated,"Shared (Dynamically uses System RAM)"
+Intel,Intel UHD Graphics,Integrated,"Shared (Dynamically uses System RAM)"
+Intel,Intel HD Graphics,Integrated,"Shared (Dynamically uses System RAM)"
+AMD,Radeon 890M,Integrated,"Shared (Dynamically uses System RAM)"
+AMD,Radeon 880M,Integrated,"Shared (Dynamically uses System RAM)"
+AMD,Radeon 780M,Integrated,"Shared (Dynamically uses System RAM)"
+AMD,Radeon 760M,Integrated,"Shared (Dynamically uses System RAM)"
+AMD,Radeon 740M,Integrated,"Shared (Dynamically uses System RAM)"
+AMD,Radeon 680M,Integrated,"Shared (Dynamically uses System RAM)"
+AMD,Radeon 660M,Integrated,"Shared (Dynamically uses System RAM)"
+AMD,Radeon Vega 8 Graphics,Integrated,"Shared (Dynamically uses System RAM)"
+AMD,Radeon Vega 7 Graphics,Integrated,"Shared (Dynamically uses System RAM)"
+AMD,Radeon Vega 3 Graphics,Integrated,"Shared (Dynamically uses System RAM)"
+AMD,AMD Radeon(TM) Graphics,Integrated,"Shared (Dynamically uses System RAM)"

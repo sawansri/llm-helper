@@ -1,0 +1,930 @@
+[
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 5090",
+    "type": "Discrete",
+    "vramGB": 32,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 5080",
+    "type": "Discrete",
+    "vramGB": 16,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 5070 Ti",
+    "type": "Discrete",
+    "vramGB": 16,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 5070",
+    "type": "Discrete",
+    "vramGB": 12,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 5060 Ti",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 5060",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 5060 Laptop GPU",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 4090",
+    "type": "Discrete",
+    "vramGB": 24,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 4080 SUPER",
+    "type": "Discrete",
+    "vramGB": 16,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 4080",
+    "type": "Discrete",
+    "vramGB": 16,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 4070 Ti SUPER",
+    "type": "Discrete",
+    "vramGB": 16,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 4070 Ti",
+    "type": "Discrete",
+    "vramGB": 12,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 4070 SUPER",
+    "type": "Discrete",
+    "vramGB": 12,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 4070",
+    "type": "Discrete",
+    "vramGB": 12,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 4060 Ti",
+    "type": "Discrete",
+    "vramGB": [
+      8,
+      16
+    ],
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 4060",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 4070 Laptop GPU",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 4060 Laptop GPU",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 4050 Laptop GPU",
+    "type": "Discrete",
+    "vramGB": 6,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 3090 Ti",
+    "type": "Discrete",
+    "vramGB": 24,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 3090",
+    "type": "Discrete",
+    "vramGB": 24,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 3080 Ti",
+    "type": "Discrete",
+    "vramGB": 12,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 3080",
+    "type": "Discrete",
+    "vramGB": [
+      10,
+      12
+    ],
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 3070 Ti",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 3070",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 3060 Ti",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 3060",
+    "type": "Discrete",
+    "vramGB": [
+      8,
+      12
+    ],
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 3050",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 3080 Ti Laptop GPU",
+    "type": "Discrete",
+    "vramGB": 16,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 3080 Laptop GPU",
+    "type": "Discrete",
+    "vramGB": [
+      8,
+      16
+    ],
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 3070 Ti Laptop GPU",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 3070 Laptop GPU",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 3060 Laptop GPU",
+    "type": "Discrete",
+    "vramGB": 6,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 3050 Ti Laptop GPU",
+    "type": "Discrete",
+    "vramGB": 4,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 3050 Laptop GPU",
+    "type": "Discrete",
+    "vramGB": [
+      4,
+      6
+    ],
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 2080 Ti",
+    "type": "Discrete",
+    "vramGB": 11,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 2080 SUPER",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 2080",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 2070 SUPER",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 2070",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 2060 SUPER",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 2060",
+    "type": "Discrete",
+    "vramGB": [
+      6,
+      12
+    ],
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce RTX 2050",
+    "type": "Discrete",
+    "vramGB": 4,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce GTX 1660 SUPER",
+    "type": "Discrete",
+    "vramGB": 6,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce GTX 1660 Ti",
+    "type": "Discrete",
+    "vramGB": 6,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce GTX 1660",
+    "type": "Discrete",
+    "vramGB": 6,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce GTX 1650 SUPER",
+    "type": "Discrete",
+    "vramGB": 4,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce GTX 1650",
+    "type": "Discrete",
+    "vramGB": 4,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce GTX 1080 Ti",
+    "type": "Discrete",
+    "vramGB": 11,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce GTX 1080",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce GTX 1070 Ti",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce GTX 1070",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce GTX 1060",
+    "type": "Discrete",
+    "vramGB": [
+      3,
+      6
+    ],
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce GTX 1050 Ti",
+    "type": "Discrete",
+    "vramGB": 4,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "NVIDIA",
+    "model": "GeForce GTX 1050",
+    "type": "Discrete",
+    "vramGB": 2,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 7900 XTX",
+    "type": "Discrete",
+    "vramGB": 24,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 7900 XT",
+    "type": "Discrete",
+    "vramGB": 20,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 7900 GRE",
+    "type": "Discrete",
+    "vramGB": 16,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 7800 XT",
+    "type": "Discrete",
+    "vramGB": 16,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 7700 XT",
+    "type": "Discrete",
+    "vramGB": 12,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 7600 XT",
+    "type": "Discrete",
+    "vramGB": 16,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 7600",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6950 XT",
+    "type": "Discrete",
+    "vramGB": 16,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6900 XT",
+    "type": "Discrete",
+    "vramGB": 16,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6800 XT",
+    "type": "Discrete",
+    "vramGB": 16,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6800",
+    "type": "Discrete",
+    "vramGB": 16,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6750 XT",
+    "type": "Discrete",
+    "vramGB": 12,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6700 XT",
+    "type": "Discrete",
+    "vramGB": 12,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6700",
+    "type": "Discrete",
+    "vramGB": 10,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6650 XT",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6600 XT",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6600",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6500 XT",
+    "type": "Discrete",
+    "vramGB": 4,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6400",
+    "type": "Discrete",
+    "vramGB": 4,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 5700 XT",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 5700",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 5600 XT",
+    "type": "Discrete",
+    "vramGB": 6,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 5500 XT",
+    "type": "Discrete",
+    "vramGB": [
+      4,
+      8
+    ],
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 590",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 580",
+    "type": "Discrete",
+    "vramGB": [
+      4,
+      8
+    ],
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 570",
+    "type": "Discrete",
+    "vramGB": [
+      4,
+      8
+    ],
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 560",
+    "type": "Discrete",
+    "vramGB": [
+      2,
+      4
+    ],
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 550",
+    "type": "Discrete",
+    "vramGB": [
+      2,
+      4
+    ],
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX Vega 64",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX Vega 56",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon VII",
+    "type": "Discrete",
+    "vramGB": 16,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 7900M",
+    "type": "Discrete",
+    "vramGB": 16,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 7700S",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 7600M XT",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 7600M",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 7600S",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6850M XT",
+    "type": "Discrete",
+    "vramGB": 12,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6800M",
+    "type": "Discrete",
+    "vramGB": 12,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6800S",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6700M",
+    "type": "Discrete",
+    "vramGB": 10,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6700S",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6650M XT",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6650M",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6600M",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6600S",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon RX 6500M",
+    "type": "Discrete",
+    "vramGB": 4,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "Intel",
+    "model": "Arc A770",
+    "type": "Discrete",
+    "vramGB": [
+      8,
+      16
+    ],
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "Intel",
+    "model": "Arc A750",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "Intel",
+    "model": "Arc A580",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "Intel",
+    "model": "Arc A380",
+    "type": "Discrete",
+    "vramGB": 6,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "Intel",
+    "model": "Arc A310",
+    "type": "Discrete",
+    "vramGB": 4,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "Intel",
+    "model": "Arc A770M",
+    "type": "Discrete",
+    "vramGB": 16,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "Intel",
+    "model": "Arc A730M",
+    "type": "Discrete",
+    "vramGB": 12,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "Intel",
+    "model": "Arc A570M",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "Intel",
+    "model": "Arc A550M",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "Intel",
+    "model": "Arc A530M",
+    "type": "Discrete",
+    "vramGB": 8,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "Intel",
+    "model": "Arc A370M",
+    "type": "Discrete",
+    "vramGB": 4,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "Intel",
+    "model": "Arc A350M",
+    "type": "Discrete",
+    "vramGB": 4,
+    "isIntegrated": false
+  },
+  {
+    "manufacturer": "Intel",
+    "model": "Iris Xe Graphics",
+    "type": "Integrated",
+    "vramGB": "shared",
+    "isIntegrated": true
+  },
+  {
+    "manufacturer": "Intel",
+    "model": "Intel UHD Graphics",
+    "type": "Integrated",
+    "vramGB": "shared",
+    "isIntegrated": true
+  },
+  {
+    "manufacturer": "Intel",
+    "model": "Intel HD Graphics",
+    "type": "Integrated",
+    "vramGB": "shared",
+    "isIntegrated": true
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon 890M",
+    "type": "Integrated",
+    "vramGB": "shared",
+    "isIntegrated": true
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon 880M",
+    "type": "Integrated",
+    "vramGB": "shared",
+    "isIntegrated": true
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon 780M",
+    "type": "Integrated",
+    "vramGB": "shared",
+    "isIntegrated": true
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon 760M",
+    "type": "Integrated",
+    "vramGB": "shared",
+    "isIntegrated": true
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon 740M",
+    "type": "Integrated",
+    "vramGB": "shared",
+    "isIntegrated": true
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon 680M",
+    "type": "Integrated",
+    "vramGB": "shared",
+    "isIntegrated": true
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon 660M",
+    "type": "Integrated",
+    "vramGB": "shared",
+    "isIntegrated": true
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon Vega 8 Graphics",
+    "type": "Integrated",
+    "vramGB": "shared",
+    "isIntegrated": true
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon Vega 7 Graphics",
+    "type": "Integrated",
+    "vramGB": "shared",
+    "isIntegrated": true
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "Radeon Vega 3 Graphics",
+    "type": "Integrated",
+    "vramGB": "shared",
+    "isIntegrated": true
+  },
+  {
+    "manufacturer": "AMD",
+    "model": "AMD Radeon(TM) Graphics",
+    "type": "Integrated",
+    "vramGB": "shared",
+    "isIntegrated": true
+  }
+]

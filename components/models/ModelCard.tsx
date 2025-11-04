@@ -1,7 +1,16 @@
-import { RecommendedModel } from '@/utils/recommendationEngine'
+'use client'
+
+import { useState } from 'react'
+import { RecommendedModel, VariantRecommendation } from '@/utils/recommendationEngine'
 
 export default function ModelCard({ recommendation }: { recommendation: RecommendedModel }) {
-  const { model, variant, score, fitReason, warnings } = recommendation
+  const { model, variants, defaultVariant } = recommendation
+
+  // Find the default variant recommendation
+  const defaultVariantRec = variants.find(v => v.variant === defaultVariant) || variants[0]
+  const [selectedVariant, setSelectedVariant] = useState<VariantRecommendation>(defaultVariantRec)
+
+  const { variant, score, fitReason, warnings } = selectedVariant
 
   return (
     <div className="bg-white rounded-lg shadow-lg p-6 border-2 border-gray-200 hover:border-blue-400 transition">
@@ -33,11 +42,35 @@ export default function ModelCard({ recommendation }: { recommendation: Recommen
         </div>
       )}
 
+      {/* Quantization Selector */}
+      {variants.length > 1 && (
+        <div className="mb-4">
+          <p className="text-sm font-semibold mb-2">Quantization:</p>
+          <div className="flex flex-wrap gap-2">
+            {variants.map((variantRec) => (
+              <button
+                key={variantRec.variant.quantization}
+                onClick={() => setSelectedVariant(variantRec)}
+                className={`px-3 py-2 rounded-lg text-sm font-semibold transition ${
+                  selectedVariant.variant.quantization === variantRec.variant.quantization
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                {variantRec.variant.quantization}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Variant Details */}
       <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
-        <div>
-          <span className="font-semibold">Quantization:</span> {variant.quantization}
-        </div>
+        {variants.length === 1 && (
+          <div>
+            <span className="font-semibold">Quantization:</span> {variant.quantization}
+          </div>
+        )}
         <div>
           <span className="font-semibold">VRAM:</span> {variant.vramRequired} GB
         </div>

@@ -1,9 +1,17 @@
 import { HardwareSpecs, LLMModel, ModelVariant } from '@/lib/types'
 
-export interface RecommendedModel {
-  model: LLMModel
+export interface VariantRecommendation {
   variant: ModelVariant
   score: number
+  fitReason: string
+  warnings?: string[]
+}
+
+export interface RecommendedModel {
+  model: LLMModel
+  variants: VariantRecommendation[]
+  defaultVariant: ModelVariant
+  score: number // Score of the default/best variant
   fitReason: string
   warnings?: string[]
 }
@@ -23,6 +31,8 @@ export function recommendModels(
   const recommendations: RecommendedModel[] = []
 
   for (const model of models) {
+    const compatibleVariants: VariantRecommendation[] = []
+
     for (const variant of model.variants) {
       // Filter by hardware constraints
       if (hardware.gpu && variant.vramRequired > hardware.gpu.vram) {
@@ -55,17 +65,32 @@ export function recommendModels(
         }
       }
 
-      // Calculate fit score
+      // Calculate fit score for this variant
       const score = calculateFitScore(hardware, variant)
       const fitReason = getFitReason(hardware, variant)
       const warnings = getWarnings(hardware, variant)
 
-      recommendations.push({
-        model,
+      compatibleVariants.push({
         variant,
         score,
         fitReason,
         warnings: warnings.length > 0 ? warnings : undefined
+      })
+    }
+
+    // Only add recommendation if at least one variant is compatible
+    if (compatibleVariants.length > 0) {
+      // Sort variants by score to find the best one
+      compatibleVariants.sort((a, b) => b.score - a.score)
+      const bestVariant = compatibleVariants[0]
+
+      recommendations.push({
+        model,
+        variants: compatibleVariants,
+        defaultVariant: bestVariant.variant,
+        score: bestVariant.score,
+        fitReason: bestVariant.fitReason,
+        warnings: bestVariant.warnings
       })
     }
   }
@@ -159,11 +184,11 @@ export function sortModels(
     case 'score':
       return sorted.sort((a, b) => b.score - a.score)
     case 'vram':
-      return sorted.sort((a, b) => a.variant.vramRequired - b.variant.vramRequired)
+      return sorted.sort((a, b) => a.defaultVariant.vramRequired - b.defaultVariant.vramRequired)
     case 'size':
-      return sorted.sort((a, b) => a.variant.fileSize - b.variant.fileSize)
+      return sorted.sort((a, b) => a.defaultVariant.fileSize - b.defaultVariant.fileSize)
     case 'context':
-      return sorted.sort((a, b) => b.variant.contextWindow - a.variant.contextWindow)
+      return sorted.sort((a, b) => b.defaultVariant.contextWindow - a.defaultVariant.contextWindow)
     default:
       return sorted
   }

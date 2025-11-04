@@ -100,8 +100,8 @@ export default function RecommendationsPage() {
         </div>
       ) : (
         <div className="space-y-6">
-          {recommendations.map((rec, idx) => (
-            <ModelCard key={`${rec.model.id}-${rec.variant.quantization}-${idx}`} recommendation={rec} />
+          {recommendations.map((rec) => (
+            <ModelCard key={rec.model.id} recommendation={rec} />
           ))}
         </div>
       )}

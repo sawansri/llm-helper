@@ -13,110 +13,104 @@ export default function ModelCard({ recommendation }: { recommendation: Recommen
   const { variant, score, fitReason, warnings } = selectedVariant
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6 border-2 border-gray-200 hover:border-blue-400 transition">
-      {/* Header */}
-      <div className="flex justify-between items-start mb-4">
-        <div>
-          <h3 className="text-2xl font-bold">{model.name}</h3>
-          <p className="text-gray-600 text-sm">{model.provider} • {model.parameters} parameters</p>
-        </div>
-        <div className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">
-          Score: {score}
-        </div>
+    <div className="bg-white rounded-lg shadow border border-gray-200 hover:border-blue-400 transition p-3">
+      {/* Header with Score */}
+      <div className="flex items-center gap-2 mb-2">
+        <h3 className="text-base font-bold">{model.name}</h3>
+        <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-semibold">
+          {score}
+        </span>
+        <span className="text-gray-500 text-xs ml-auto">{model.provider} • {model.parameters}</span>
       </div>
 
-      {/* Description */}
-      <p className="text-gray-700 mb-4">{model.description}</p>
-
-      {/* Fit Reason */}
-      <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
-        <p className="text-green-800 font-semibold text-sm">✓ {fitReason}</p>
+      {/* Status Bar - Fit Reason & Warnings */}
+      <div className="flex flex-wrap gap-1.5 mb-2 text-xs">
+        <span className="inline-flex items-center bg-green-50 text-green-700 px-2 py-0.5 rounded border border-green-200">
+          ✓ {fitReason}
+        </span>
+        {warnings && warnings.map((warning, idx) => (
+          <span key={idx} className="inline-flex items-center bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded border border-yellow-200">
+            ⚠ {warning}
+          </span>
+        ))}
       </div>
 
-      {/* Warnings */}
-      {warnings && warnings.length > 0 && (
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4">
-          {warnings.map((warning, idx) => (
-            <p key={idx} className="text-yellow-800 text-sm">⚠ {warning}</p>
-          ))}
-        </div>
-      )}
-
-      {/* Quantization Selector */}
-      {variants.length > 1 && (
-        <div className="mb-4">
-          <p className="text-sm font-semibold mb-2">Quantization:</p>
-          <div className="flex flex-wrap gap-2">
-            {variants.map((variantRec) => (
-              <button
-                key={variantRec.variant.quantization}
-                onClick={() => setSelectedVariant(variantRec)}
-                className={`px-3 py-2 rounded-lg text-sm font-semibold transition ${
-                  selectedVariant.variant.quantization === variantRec.variant.quantization
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                {variantRec.variant.quantization}
-              </button>
-            ))}
+      {/* Combined Row: Quantization + Specs */}
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-2 text-xs pb-2 border-b border-gray-100">
+        {/* Quantization Selector */}
+        {variants.length > 1 ? (
+          <div className="flex items-center gap-1.5">
+            <span className="text-gray-600 font-semibold">Quant:</span>
+            <div className="flex gap-1">
+              {variants.map((variantRec) => (
+                <button
+                  key={variantRec.variant.quantization}
+                  onClick={() => setSelectedVariant(variantRec)}
+                  className={`px-2 py-0.5 rounded text-xs font-semibold transition ${
+                    selectedVariant.variant.quantization === variantRec.variant.quantization
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {variantRec.variant.quantization}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
-
-      {/* Variant Details */}
-      <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
-        {variants.length === 1 && (
-          <div>
-            <span className="font-semibold">Quantization:</span> {variant.quantization}
+        ) : (
+          <div className="text-gray-600">
+            <span className="font-semibold">Quant:</span> {variant.quantization}
           </div>
         )}
-        <div>
-          <span className="font-semibold">VRAM:</span> {variant.vramRequired} GB
+
+        {/* Specs inline */}
+        <div className="text-gray-600">
+          <span className="text-gray-500">VRAM:</span>
+          <span className="ml-1 font-semibold text-gray-900">{variant.vramRequired}GB</span>
         </div>
-        <div>
-          <span className="font-semibold">RAM:</span> {variant.ramRequired} GB
+        <div className="text-gray-600">
+          <span className="text-gray-500">RAM:</span>
+          <span className="ml-1 font-semibold text-gray-900">{variant.ramRequired}GB</span>
         </div>
-        <div>
-          <span className="font-semibold">File Size:</span> {variant.fileSize} GB
+        <div className="text-gray-600">
+          <span className="text-gray-500">Size:</span>
+          <span className="ml-1 font-semibold text-gray-900">{variant.fileSize}GB</span>
         </div>
-        <div>
-          <span className="font-semibold">Context:</span> {variant.contextWindow.toLocaleString()} tokens
+        <div className="text-gray-600">
+          <span className="text-gray-500">Context:</span>
+          <span className="ml-1 font-semibold text-gray-900">{(variant.contextWindow / 1000).toFixed(0)}K</span>
         </div>
       </div>
 
-      {/* Use Cases */}
-      <div className="mb-4">
-        <p className="text-sm font-semibold mb-2">Use Cases:</p>
-        <div className="flex flex-wrap gap-2">
-          {model.useCases.map(useCase => (
+      {/* Bottom Row: Use Cases and Links */}
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <div className="flex flex-wrap gap-1">
+          {model.useCases.slice(0, 4).map(useCase => (
             <span
               key={useCase}
-              className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs"
+              className="bg-gray-100 text-gray-600 px-2 py-0.5 rounded text-xs"
             >
               {useCase}
             </span>
           ))}
         </div>
-      </div>
-
-      {/* Links */}
-      <div className="flex gap-3">
-        {model.links.huggingFace && (
-          <a
-            href={model.links.huggingFace}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:text-blue-800 text-sm font-semibold"
-          >
-            HuggingFace →
-          </a>
-        )}
-        {model.links.ollama && (
-          <span className="bg-gray-800 text-white px-3 py-1 rounded text-xs font-mono">
-            {model.links.ollama}
-          </span>
-        )}
+        <div className="flex gap-2 items-center">
+          {model.links.huggingFace && (
+            <a
+              href={model.links.huggingFace}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-800 text-xs font-semibold"
+            >
+              HF →
+            </a>
+          )}
+          {model.links.ollama && (
+            <span className="bg-gray-800 text-white px-2 py-0.5 rounded text-xs font-mono">
+              {model.links.ollama}
+            </span>
+          )}
+        </div>
       </div>
     </div>
   )

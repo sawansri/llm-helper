@@ -11,6 +11,14 @@ export interface HardwareSpecs {
   }
   os?: 'windows' | 'macos' | 'linux' | 'unknown'
   storage?: number // in GB
+  preferences?: UserPreferences
+}
+
+export interface UserPreferences {
+  priority: 'quality' | 'speed' | 'balanced'
+  minContextForUseCase?: number
+  acceptableQuality?: 'high' | 'medium' | 'any'
+  selectedUseCases?: string[]
 }
 
 export interface DetectionResult {
@@ -25,6 +33,22 @@ export interface ModelVariant {
   ramRequired: number // in GB
   fileSize: number // in GB
   contextWindow: number // tokens
+}
+
+export interface QualityMetrics {
+  mmlu?: number // Benchmark score (0-100)
+  humanEval?: number // Coding benchmark (0-100)
+  mt_bench?: number // Chat quality (0-10)
+  overallRating: number // Simplified 0-5 rating
+}
+
+export interface PerformanceProfile {
+  inferenceSpeed: 'fast' | 'medium' | 'slow'
+  qualityLevel: 'high' | 'medium' | 'low'
+}
+
+export interface RecommendedContexts {
+  [useCase: string]: number // Min context tokens per use case
 }
 
 export interface LLMModel {
@@ -42,4 +66,25 @@ export interface LLMModel {
     website?: string
   }
   tags: string[]
+  qualityMetrics?: QualityMetrics
+  performanceProfile?: PerformanceProfile
+  recommendedContexts?: RecommendedContexts
+}
+
+// Fitness Assessment Types
+export type FitnessCategory = 'excellent' | 'good' | 'fair' | 'poor' | 'incompatible'
+
+export interface ExplainableReason {
+  factor: string // "VRAM Utilization" | "Model Quality" | "Context Match" | etc.
+  rating: 'positive' | 'neutral' | 'negative'
+  impact: 'high' | 'medium' | 'low'
+  explanation: string // Human-readable explanation
+}
+
+export interface FitnessAssessment {
+  category: FitnessCategory
+  score: number // Sub-score within category
+  reasons: ExplainableReason[]
+  warnings: string[]
+  recommendations: string[]
 }

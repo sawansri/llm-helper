@@ -8,6 +8,22 @@
     "license": "Llama 3 Community License",
     "useCases": ["chat", "general", "coding", "writing"],
     "tags": ["popular", "versatile", "open-source"],
+    "qualityMetrics": {
+      "mmlu": 68.4,
+      "humanEval": 62.2,
+      "mt_bench": 8.1,
+      "overallRating": 4.2
+    },
+    "performanceProfile": {
+      "inferenceSpeed": "fast",
+      "qualityLevel": "high"
+    },
+    "recommendedContexts": {
+      "chat": 4096,
+      "coding": 8192,
+      "writing": 8192,
+      "general": 4096
+    },
     "variants": [
       {
         "quantization": "Q4_K_M",
@@ -46,6 +62,21 @@
     "license": "Apache 2.0",
     "useCases": ["chat", "general", "coding"],
     "tags": ["popular", "efficient", "open-source"],
+    "qualityMetrics": {
+      "mmlu": 60.1,
+      "humanEval": 40.2,
+      "mt_bench": 7.6,
+      "overallRating": 3.8
+    },
+    "performanceProfile": {
+      "inferenceSpeed": "fast",
+      "qualityLevel": "high"
+    },
+    "recommendedContexts": {
+      "chat": 4096,
+      "coding": 8192,
+      "general": 4096
+    },
     "variants": [
       {
         "quantization": "Q4_K_M",
@@ -77,6 +108,21 @@
     "license": "MIT",
     "useCases": ["chat", "general", "mobile"],
     "tags": ["efficient", "small", "open-source"],
+    "qualityMetrics": {
+      "mmlu": 69.0,
+      "humanEval": 61.0,
+      "mt_bench": 8.4,
+      "overallRating": 4.1
+    },
+    "performanceProfile": {
+      "inferenceSpeed": "fast",
+      "qualityLevel": "medium"
+    },
+    "recommendedContexts": {
+      "chat": 2048,
+      "general": 2048,
+      "mobile": 2048
+    },
     "variants": [
       {
         "quantization": "Q4_K_M",
@@ -107,6 +153,23 @@
     "license": "Llama 3 Community License",
     "useCases": ["chat", "general", "coding", "writing", "research"],
     "tags": ["powerful", "large", "open-source"],
+    "qualityMetrics": {
+      "mmlu": 82.0,
+      "humanEval": 81.7,
+      "mt_bench": 8.9,
+      "overallRating": 4.8
+    },
+    "performanceProfile": {
+      "inferenceSpeed": "slow",
+      "qualityLevel": "high"
+    },
+    "recommendedContexts": {
+      "chat": 4096,
+      "coding": 8192,
+      "writing": 8192,
+      "general": 4096,
+      "research": 8192
+    },
     "variants": [
       {
         "quantization": "Q4_K_M",
@@ -138,6 +201,20 @@
     "license": "DeepSeek License",
     "useCases": ["coding", "technical"],
     "tags": ["coding", "specialized", "efficient"],
+    "qualityMetrics": {
+      "mmlu": 50.0,
+      "humanEval": 78.6,
+      "mt_bench": 7.0,
+      "overallRating": 3.5
+    },
+    "performanceProfile": {
+      "inferenceSpeed": "fast",
+      "qualityLevel": "medium"
+    },
+    "recommendedContexts": {
+      "coding": 16384,
+      "technical": 16384
+    },
     "variants": [
       {
         "quantization": "Q4_K_M",

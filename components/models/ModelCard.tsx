@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { RecommendedModel, VariantRecommendation } from '@/utils/recommendationEngine'
+import { FitnessCategory } from '@/lib/types'
 
 export default function ModelCard({ recommendation }: { recommendation: RecommendedModel }) {
   const { model, variants, defaultVariant } = recommendation
@@ -10,30 +11,79 @@ export default function ModelCard({ recommendation }: { recommendation: Recommen
   const defaultVariantRec = variants.find(v => v.variant === defaultVariant) || variants[0]
   const [selectedVariant, setSelectedVariant] = useState<VariantRecommendation>(defaultVariantRec)
 
-  const { variant, score, fitReason, warnings } = selectedVariant
+  const { variant, assessment } = selectedVariant
+  const { category, score, reasons, warnings, recommendations: suggestions } = assessment
+
+  // Helper function to get category badge styling
+  const getCategoryBadge = (category: FitnessCategory) => {
+    const styles = {
+      excellent: 'bg-green-100 text-green-800 border-green-300',
+      good: 'bg-blue-100 text-blue-800 border-blue-300',
+      fair: 'bg-yellow-100 text-yellow-800 border-yellow-300',
+      poor: 'bg-orange-100 text-orange-800 border-orange-300',
+      incompatible: 'bg-red-100 text-red-800 border-red-300'
+    }
+    return styles[category] || styles.good
+  }
+
+  // Helper function to get reason icon
+  const getReasonIcon = (rating: 'positive' | 'neutral' | 'negative') => {
+    if (rating === 'positive') return '✓'
+    if (rating === 'negative') return '✗'
+    return '•'
+  }
 
   return (
     <div className="bg-white rounded-lg shadow border border-gray-200 hover:border-blue-400 transition p-3">
-      {/* Header with Score */}
+      {/* Header with Category Badge */}
       <div className="flex items-center gap-2 mb-2">
         <h3 className="text-base font-bold">{model.name}</h3>
-        <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-semibold">
-          {score}
+        <span className={`px-2 py-0.5 rounded text-xs font-semibold border ${getCategoryBadge(category)}`}>
+          {category.charAt(0).toUpperCase() + category.slice(1)}
         </span>
+        <span className="text-gray-400 text-xs">({score})</span>
         <span className="text-gray-500 text-xs ml-auto">{model.provider} • {model.parameters}</span>
       </div>
 
-      {/* Status Bar - Fit Reason & Warnings */}
-      <div className="flex flex-wrap gap-1.5 mb-2 text-xs">
-        <span className="inline-flex items-center bg-green-50 text-green-700 px-2 py-0.5 rounded border border-green-200">
-          ✓ {fitReason}
-        </span>
-        {warnings && warnings.map((warning, idx) => (
-          <span key={idx} className="inline-flex items-center bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded border border-yellow-200">
-            ⚠ {warning}
-          </span>
-        ))}
+      {/* Explainable Reasons */}
+      <div className="mb-2">
+        <p className="text-xs font-semibold text-gray-600 mb-1">Why this fits:</p>
+        <div className="flex flex-wrap gap-1.5 text-xs">
+          {reasons.map((reason, idx) => (
+            <span
+              key={idx}
+              className={`inline-flex items-center gap-1 px-2 py-0.5 rounded border ${
+                reason.rating === 'positive'
+                  ? 'bg-green-50 text-green-700 border-green-200'
+                  : reason.rating === 'negative'
+                  ? 'bg-red-50 text-red-700 border-red-200'
+                  : 'bg-gray-50 text-gray-700 border-gray-200'
+              }`}
+              title={reason.explanation}
+            >
+              <span>{getReasonIcon(reason.rating)}</span>
+              <span className="font-medium">{reason.factor}:</span>
+              <span>{reason.explanation.split(' - ')[1] || reason.explanation}</span>
+            </span>
+          ))}
+        </div>
       </div>
+
+      {/* Warnings & Suggestions */}
+      {(warnings.length > 0 || suggestions.length > 0) && (
+        <div className="flex flex-wrap gap-1.5 mb-2 text-xs">
+          {warnings.map((warning, idx) => (
+            <span key={idx} className="inline-flex items-center bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded border border-yellow-200">
+              ⚠ {warning}
+            </span>
+          ))}
+          {suggestions.map((suggestion, idx) => (
+            <span key={idx} className="inline-flex items-center bg-blue-50 text-blue-700 px-2 py-0.5 rounded border border-blue-200">
+              💡 {suggestion}
+            </span>
+          ))}
+        </div>
+      )}
 
       {/* Combined Row: Quantization + Specs */}
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-2 text-xs pb-2 border-b border-gray-100">

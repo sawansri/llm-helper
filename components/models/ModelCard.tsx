@@ -90,7 +90,7 @@ export default function ModelCard({ recommendation }: { recommendation: Recommen
         {/* Quantization Selector */}
         {variants.length > 1 ? (
           <div className="flex items-center gap-1.5">
-            <span className="text-gray-600 font-semibold">Quant:</span>
+            <span className="text-gray-600 font-semibold">Quantization:</span>
             <div className="flex gap-1">
               {variants.map((variantRec) => (
                 <button
@@ -109,7 +109,7 @@ export default function ModelCard({ recommendation }: { recommendation: Recommen
           </div>
         ) : (
           <div className="text-gray-600">
-            <span className="font-semibold">Quant:</span> {variant.quantization}
+            <span className="font-semibold">Quantization:</span> {variant.quantization}
           </div>
         )}
 

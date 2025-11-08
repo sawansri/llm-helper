@@ -4,7 +4,7 @@ HuggingFace Model Search Module
 Searches HuggingFace Hub for models based on criteria like size, category, and popularity.
 """
 
-from huggingface_hub import HfApi, ModelFilter
+from huggingface_hub import HfApi
 from typing import List, Dict, Optional, Tuple
 import re
 
@@ -182,23 +182,25 @@ def search_models(
     """
     api = HfApi()
 
-    # Build search filters
-    model_filter = ModelFilter(
-        task="text-generation",
-        library="transformers"
-    )
-
-    # Add language filter if specified
-    if language:
-        model_filter.language = language
-
     # Fetch more models than needed (we'll filter by size and category)
     search_limit = limit * 10  # Fetch 10x more to account for filtering
 
     try:
+        # Build filter tags (v0.24.0+ uses tags as filter, pipeline_tag for task)
+        filter_tags = []
+
+        # Add library tag
+        filter_tags.append("transformers")
+
+        # Add language tag if specified
+        if language:
+            filter_tags.append(f"language:{language}")
+
         # Search models sorted by downloads (popularity)
+        # pipeline_tag is the new way to specify task type
         models = api.list_models(
-            filter=model_filter,
+            pipeline_tag="text-generation",
+            filter=filter_tags if filter_tags else None,
             sort="downloads",
             direction=-1,
             limit=search_limit,

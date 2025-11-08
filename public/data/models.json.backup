@@ -6,17 +6,8 @@
     "parameters": "8B",
     "provider": "Meta",
     "license": "Llama 3 Community License",
-    "useCases": [
-      "chat",
-      "general",
-      "coding",
-      "writing"
-    ],
-    "tags": [
-      "popular",
-      "versatile",
-      "open-source"
-    ],
+    "useCases": ["chat", "general", "coding", "writing"],
+    "tags": ["popular", "versatile", "open-source"],
     "qualityMetrics": {
       "mmlu": 68.4,
       "humanEval": 62.2,
@@ -69,16 +60,8 @@
     "parameters": "7B",
     "provider": "Mistral AI",
     "license": "Apache 2.0",
-    "useCases": [
-      "chat",
-      "general",
-      "coding"
-    ],
-    "tags": [
-      "popular",
-      "efficient",
-      "open-source"
-    ],
+    "useCases": ["chat", "general", "coding"],
+    "tags": ["popular", "efficient", "open-source"],
     "qualityMetrics": {
       "mmlu": 60.1,
       "humanEval": 40.2,
@@ -123,16 +106,8 @@
     "parameters": "3.8B",
     "provider": "Microsoft",
     "license": "MIT",
-    "useCases": [
-      "chat",
-      "general",
-      "mobile"
-    ],
-    "tags": [
-      "efficient",
-      "small",
-      "open-source"
-    ],
+    "useCases": ["chat", "general", "mobile"],
+    "tags": ["efficient", "small", "open-source"],
     "qualityMetrics": {
       "mmlu": 69.0,
       "humanEval": 61.0,
@@ -176,18 +151,8 @@
     "parameters": "70B",
     "provider": "Meta",
     "license": "Llama 3 Community License",
-    "useCases": [
-      "chat",
-      "general",
-      "coding",
-      "writing",
-      "research"
-    ],
-    "tags": [
-      "powerful",
-      "large",
-      "open-source"
-    ],
+    "useCases": ["chat", "general", "coding", "writing", "research"],
+    "tags": ["powerful", "large", "open-source"],
     "qualityMetrics": {
       "mmlu": 82.0,
       "humanEval": 81.7,
@@ -234,15 +199,8 @@
     "parameters": "6.7B",
     "provider": "DeepSeek",
     "license": "DeepSeek License",
-    "useCases": [
-      "coding",
-      "technical"
-    ],
-    "tags": [
-      "coding",
-      "specialized",
-      "efficient"
-    ],
+    "useCases": ["coding", "technical"],
+    "tags": ["coding", "specialized", "efficient"],
     "qualityMetrics": {
       "mmlu": 50.0,
       "humanEval": 78.6,
@@ -276,76 +234,6 @@
     "links": {
       "huggingFace": "https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-instruct",
       "ollama": "ollama run deepseek-coder"
-    }
-  },
-  {
-    "id": "qwen3-14b",
-    "name": "Qwen3 14B",
-    "description": "Large language model for text generation tasks",
-    "parameters": "14B",
-    "provider": "Alibaba",
-    "license": "Custom",
-    "useCases": [
-      "chat"
-    ],
-    "tags": [
-      "open-source",
-      "popular"
-    ],
-    "variants": [
-      {
-        "quantization": "Q3_K_M",
-        "vramRequired": 7,
-        "ramRequired": 9,
-        "fileSize": 6.1,
-        "contextWindow": 8192
-      },
-      {
-        "quantization": "Q4_0",
-        "vramRequired": 8,
-        "ramRequired": 11,
-        "fileSize": 7.0,
-        "contextWindow": 8192
-      },
-      {
-        "quantization": "Q4_K_M",
-        "vramRequired": 9,
-        "ramRequired": 12,
-        "fileSize": 7.9,
-        "contextWindow": 8192
-      },
-      {
-        "quantization": "Q5_K_M",
-        "vramRequired": 12,
-        "ramRequired": 14,
-        "fileSize": 9.6,
-        "contextWindow": 8192
-      },
-      {
-        "quantization": "Q6_K",
-        "vramRequired": 14,
-        "ramRequired": 17,
-        "fileSize": 11.4,
-        "contextWindow": 8192
-      },
-      {
-        "quantization": "Q8_0",
-        "vramRequired": 18,
-        "ramRequired": 22,
-        "fileSize": 14.9,
-        "contextWindow": 8192
-      }
-    ],
-    "links": {
-      "huggingFace": "https://huggingface.co/Qwen/Qwen3-14B",
-      "ollama": "ollama run qwen"
-    },
-    "performanceProfile": {
-      "inferenceSpeed": "fast",
-      "qualityLevel": "high"
-    },
-    "recommendedContexts": {
-      "chat": 4096
     }
   }
 ]

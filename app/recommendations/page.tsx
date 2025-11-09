@@ -12,7 +12,7 @@ export default function RecommendationsPage() {
   const [hardware, setHardware] = useState<HardwareSpecs | null>(null)
   const [models, setModels] = useState<LLMModel[]>([])
   const [recommendations, setRecommendations] = useState<RecommendedModel[]>([])
-  const [sortBy, setSortBy] = useState<'score' | 'vram' | 'size' | 'context'>('score')
+  const [sortBy, setSortBy] = useState<'score' | 'vram' | 'size' | 'context' | 'efficiency'>('score')
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -64,30 +64,36 @@ export default function RecommendationsPage() {
       </p>
 
       {/* Sort Controls */}
-      <div className="mb-6 flex gap-4">
+      <div className="mb-6 flex gap-4 flex-wrap">
         <button
           onClick={() => handleSortChange('score')}
           className={`px-4 py-2 rounded ${sortBy === 'score' ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}
         >
-          Best Fit
+          Most Powerful
+        </button>
+        <button
+          onClick={() => handleSortChange('efficiency')}
+          className={`px-4 py-2 rounded ${sortBy === 'efficiency' ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}
+        >
+          Best Efficiency
         </button>
         <button
           onClick={() => handleSortChange('vram')}
           className={`px-4 py-2 rounded ${sortBy === 'vram' ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}
         >
-          VRAM
+          Lowest VRAM
         </button>
         <button
           onClick={() => handleSortChange('size')}
           className={`px-4 py-2 rounded ${sortBy === 'size' ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}
         >
-          File Size
+          Smallest Size
         </button>
         <button
           onClick={() => handleSortChange('context')}
           className={`px-4 py-2 rounded ${sortBy === 'context' ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}
         >
-          Context Window
+          Largest Context
         </button>
       </div>
 

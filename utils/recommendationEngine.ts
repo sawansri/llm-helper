@@ -119,11 +119,9 @@ function evaluateModel(
   baseScore += ramEval.scoreImpact
 
   // Factor 2: Model Quality (30% weight)
-  if (model.qualityMetrics) {
-    const qualityEval = evaluateQuality(model, preferences)
-    reasons.push(qualityEval.reason)
-    baseScore += qualityEval.scoreImpact
-  }
+  const qualityEval = evaluateQuality(model, variant, preferences)
+  reasons.push(qualityEval.reason)
+  baseScore += qualityEval.scoreImpact
 
   // Factor 3: Context Window Match (15% weight)
   const useCase = preferences.selectedUseCases?.[0] || model.useCases[0]
@@ -145,8 +143,8 @@ function evaluateModel(
     baseScore += 3
   }
 
-  // Clamp score to valid range
-  baseScore = Math.max(0, Math.min(100, baseScore))
+  // Clamp score to valid range (allow scores above 100 for better differentiation)
+  baseScore = Math.max(0, baseScore)
 
   // Convert to category
   const category = scoreToCategory(baseScore)
@@ -166,7 +164,7 @@ function evaluateModel(
   }
 }
 
-// Evaluate VRAM utilization
+// Evaluate VRAM utilization using formula-based approach
 function evaluateVRAM(hardware: HardwareSpecs, variant: ModelVariant): {
   reason: ExplainableReason
   scoreImpact: number
@@ -179,57 +177,38 @@ function evaluateVRAM(hardware: HardwareSpecs, variant: ModelVariant): {
         impact: 'high',
         explanation: 'No GPU detected - using CPU/RAM'
       },
-      scoreImpact: -20 // Penalty for no GPU
+      scoreImpact: -20
     }
   }
 
   const utilization = variant.vramRequired / hardware.gpu.vram
   const percentUsed = Math.round(utilization * 100)
 
-  if (utilization <= 0.5) {
-    return {
-      reason: {
-        factor: 'VRAM',
-        rating: 'positive',
-        impact: 'high',
-        explanation: `Uses ${percentUsed}% of VRAM - excellent headroom`
-      },
-      scoreImpact: 0 // No penalty
-    }
-  } else if (utilization <= 0.7) {
-    return {
-      reason: {
-        factor: 'VRAM',
-        rating: 'positive',
-        impact: 'high',
-        explanation: `Uses ${percentUsed}% of VRAM - good fit`
-      },
-      scoreImpact: -5
-    }
-  } else if (utilization <= 0.9) {
-    return {
-      reason: {
-        factor: 'VRAM',
-        rating: 'neutral',
-        impact: 'high',
-        explanation: `Uses ${percentUsed}% of VRAM - tight but workable`
-      },
-      scoreImpact: -15
-    }
-  } else {
-    return {
-      reason: {
-        factor: 'VRAM',
-        rating: 'negative',
-        impact: 'high',
-        explanation: `Uses ${percentUsed}% of VRAM - may be slow`
-      },
-      scoreImpact: -30
-    }
+  // Formula-based penalty: exponential increase as utilization grows
+  // 0-50%: 0 penalty, 50-70%: 0-5, 70-90%: 5-15, 90%+: 15-30
+  let scoreImpact = 0
+  if (utilization > 0.5) {
+    scoreImpact = -Math.pow((utilization - 0.5) * 2, 1.8) * 30
+  }
+
+  const rating = utilization <= 0.7 ? 'positive' : utilization <= 0.9 ? 'neutral' : 'negative'
+  const explanation = utilization <= 0.5 ? `Uses ${percentUsed}% of VRAM - excellent headroom` :
+                      utilization <= 0.7 ? `Uses ${percentUsed}% of VRAM - good fit` :
+                      utilization <= 0.9 ? `Uses ${percentUsed}% of VRAM - tight but workable` :
+                                          `Uses ${percentUsed}% of VRAM - may be slow`
+
+  return {
+    reason: {
+      factor: 'VRAM',
+      rating,
+      impact: 'high',
+      explanation
+    },
+    scoreImpact: Math.round(scoreImpact)
   }
 }
 
-// Evaluate RAM utilization
+// Evaluate RAM utilization using formula-based approach
 function evaluateRAM(hardware: HardwareSpecs, variant: ModelVariant): {
   reason: ExplainableReason
   scoreImpact: number
@@ -237,109 +216,92 @@ function evaluateRAM(hardware: HardwareSpecs, variant: ModelVariant): {
   const utilization = variant.ramRequired / hardware.ram
   const percentUsed = Math.round(utilization * 100)
 
-  if (utilization <= 0.5) {
-    return {
-      reason: {
-        factor: 'RAM',
-        rating: 'positive',
-        impact: 'medium',
-        explanation: `Uses ${percentUsed}% of RAM - plenty available`
-      },
-      scoreImpact: 0
-    }
-  } else if (utilization <= 0.7) {
-    return {
-      reason: {
-        factor: 'RAM',
-        rating: 'positive',
-        impact: 'medium',
-        explanation: `Uses ${percentUsed}% of RAM - good`
-      },
-      scoreImpact: -3
-    }
-  } else if (utilization <= 0.85) {
-    return {
-      reason: {
-        factor: 'RAM',
-        rating: 'neutral',
-        impact: 'medium',
-        explanation: `Uses ${percentUsed}% of RAM - close other apps`
-      },
-      scoreImpact: -8
-    }
-  } else {
-    return {
-      reason: {
-        factor: 'RAM',
-        rating: 'negative',
-        impact: 'medium',
-        explanation: `Uses ${percentUsed}% of RAM - may cause swapping`
-      },
-      scoreImpact: -15
-    }
+  // Formula-based penalty: exponential increase as utilization grows
+  // 0-50%: 0 penalty, 50-70%: 0-3, 70-85%: 3-8, 85%+: 8-15
+  let scoreImpact = 0
+  if (utilization > 0.5) {
+    scoreImpact = -Math.pow((utilization - 0.5) * 2, 1.8) * 15
+  }
+
+  const rating = utilization <= 0.7 ? 'positive' : utilization <= 0.85 ? 'neutral' : 'negative'
+  const explanation = utilization <= 0.5 ? `Uses ${percentUsed}% of RAM - plenty available` :
+                      utilization <= 0.7 ? `Uses ${percentUsed}% of RAM - good` :
+                      utilization <= 0.85 ? `Uses ${percentUsed}% of RAM - close other apps` :
+                                           `Uses ${percentUsed}% of RAM - may cause swapping`
+
+  return {
+    reason: {
+      factor: 'RAM',
+      rating,
+      impact: 'medium',
+      explanation
+    },
+    scoreImpact: Math.round(scoreImpact)
   }
 }
 
-// Evaluate model quality
-function evaluateQuality(model: LLMModel, preferences: UserPreferences): {
+// Evaluate model quality - prioritizes capability (parameter count) with benchmark bonus
+function evaluateQuality(
+  model: LLMModel,
+  variant: ModelVariant,
+  preferences: UserPreferences
+): {
   reason: ExplainableReason
   scoreImpact: number
 } {
-  const rating = model.qualityMetrics!.overallRating
+  // Extract parameter count (primary factor for capability)
+  const paramMatch = model.parameters.match(/(\d+(?:\.\d+)?)\s*B/i)
+  const paramCount = paramMatch ? parseFloat(paramMatch[1]) : 0
 
-  // Check if quality meets user preference
-  if (preferences.acceptableQuality === 'high' && rating < 4.0) {
-    return {
-      reason: {
-        factor: 'Quality',
-        rating: 'negative',
-        impact: 'high',
-        explanation: `${rating}/5 rating - below your quality preference`
-      },
-      scoreImpact: -20
-    }
+  // Base capability score from parameter count (0-25 points)
+  // Larger models = higher capability
+  let capabilityScore = Math.min(25, paramCount * 1.5)
+
+  // Benchmark bonus for models with verified performance (0-10 points)
+  let benchmarkBonus = 0
+  let explanation = ''
+
+  if (model.qualityMetrics) {
+    const metrics = model.qualityMetrics
+
+    // Composite score from benchmarks
+    const mmluNorm = (metrics.mmlu || 0) / 100
+    const humanEvalNorm = (metrics.humanEval || 0) / 100
+    const mtBenchNorm = (metrics.mt_bench || 0) / 10
+
+    const scores = [mmluNorm, humanEvalNorm, mtBenchNorm].filter(s => s > 0)
+    const avgScore = scores.length > 0 ? scores.reduce((a, b) => a + b, 0) / scores.length : 0
+
+    // Convert to 0-10 point bonus
+    benchmarkBonus = avgScore * 10
+
+    explanation = `${model.parameters} - Benchmarks: MMLU ${metrics.mmlu?.toFixed(1)}%, HumanEval ${metrics.humanEval?.toFixed(1)}%, MT-Bench ${metrics.mt_bench?.toFixed(1)}`
+  } else {
+    // No benchmarks - use capability estimate
+    const contextBonus = variant.contextWindow >= 128000 ? 3 :
+                         variant.contextWindow >= 32000 ? 2 :
+                         variant.contextWindow >= 16000 ? 1 : 0
+    benchmarkBonus = contextBonus
+
+    explanation = `${model.parameters} model with ${(variant.contextWindow / 1000).toFixed(0)}K context (capability estimated from size)`
   }
 
-  if (rating >= 4.5) {
-    return {
-      reason: {
-        factor: 'Quality',
-        rating: 'positive',
-        impact: 'high',
-        explanation: `${rating}/5 rating - excellent model quality`
-      },
-      scoreImpact: 15
-    }
-  } else if (rating >= 4.0) {
-    return {
-      reason: {
-        factor: 'Quality',
-        rating: 'positive',
-        impact: 'high',
-        explanation: `${rating}/5 rating - high quality`
-      },
-      scoreImpact: 10
-    }
-  } else if (rating >= 3.5) {
-    return {
-      reason: {
-        factor: 'Quality',
-        rating: 'neutral',
-        impact: 'medium',
-        explanation: `${rating}/5 rating - good quality`
-      },
-      scoreImpact: 5
-    }
-  } else {
-    return {
-      reason: {
-        factor: 'Quality',
-        rating: 'neutral',
-        impact: 'medium',
-        explanation: `${rating}/5 rating - adequate for basic tasks`
-      },
-      scoreImpact: 0
-    }
+  const totalScore = capabilityScore + benchmarkBonus
+
+  // Check if quality meets user preference
+  const estimatedRating = (totalScore / 35) * 5 // Normalize to 0-5 scale
+  const meetsPreference = preferences.acceptableQuality !== 'high' || estimatedRating >= 4.0
+
+  const finalScore = meetsPreference ? totalScore : totalScore - 20
+
+  return {
+    reason: {
+      factor: 'Model Capability',
+      rating: totalScore >= 15 ? 'positive' : totalScore >= 8 ? 'neutral' : 'negative',
+      impact: 'high',
+      explanation
+    },
+    scoreImpact: finalScore
   }
 }
 
@@ -551,7 +513,7 @@ export function filterByUseCase(models: LLMModel[], useCase: string): LLMModel[]
 
 export function sortModels(
   recommendations: RecommendedModel[],
-  sortBy: 'score' | 'vram' | 'size' | 'context'
+  sortBy: 'score' | 'vram' | 'size' | 'context' | 'efficiency'
 ): RecommendedModel[] {
   const sorted = [...recommendations]
 
@@ -564,7 +526,41 @@ export function sortModels(
       return sorted.sort((a, b) => a.defaultVariant.fileSize - b.defaultVariant.fileSize)
     case 'context':
       return sorted.sort((a, b) => b.defaultVariant.contextWindow - a.defaultVariant.contextWindow)
+    case 'efficiency':
+      // Sort by performance per VRAM (higher is better)
+      return sorted.sort((a, b) => {
+        const efficiencyA = calculateEfficiency(a.model, a.defaultVariant)
+        const efficiencyB = calculateEfficiency(b.model, b.defaultVariant)
+        return efficiencyB - efficiencyA
+      })
     default:
       return sorted
   }
+}
+
+// Calculate efficiency score: performance per VRAM GB
+function calculateEfficiency(model: LLMModel, variant: ModelVariant): number {
+  // Extract parameter count
+  const paramMatch = model.parameters.match(/(\d+(?:\.\d+)?)\s*B/i)
+  const paramCount = paramMatch ? parseFloat(paramMatch[1]) : 1
+
+  // Get benchmark score if available, else estimate from params
+  let performanceScore = paramCount
+
+  if (model.qualityMetrics) {
+    const metrics = model.qualityMetrics
+    const mmluNorm = (metrics.mmlu || 0) / 100
+    const humanEvalNorm = (metrics.humanEval || 0) / 100
+    const mtBenchNorm = (metrics.mt_bench || 0) / 10
+
+    const scores = [mmluNorm, humanEvalNorm, mtBenchNorm].filter(s => s > 0)
+    if (scores.length > 0) {
+      const avgScore = scores.reduce((a, b) => a + b, 0) / scores.length
+      // Scale to be comparable with param count
+      performanceScore = paramCount * (0.5 + avgScore * 1.5)
+    }
+  }
+
+  // Efficiency = performance / resource cost
+  return performanceScore / variant.vramRequired
 }
